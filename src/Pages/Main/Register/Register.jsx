@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 import image1 from "../../../assets/register2.png";
 import bgImage from "../../../assets/bg-image.png";
 import { FileInput, Label, TextInput } from "flowbite-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import SocialLogin from "../../../Shared/SocialLogin/SocialLogin";
 import { useForm } from "react-hook-form";
@@ -14,13 +14,14 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 
 const Register = () => {
     const axiosPublic = useAxiosPublic();
+    const navigate = useNavigate();
 
     const { createUser ,profileUpdate } = useAuth();
 
     const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = async (data) => {
-        console.log(data);
+        // console.log(data);
         // upload image on imageBB and then get the url
         const imageFile = { image: data.image[0] };
         const res = await axiosPublic.post(image_hosting_api, imageFile, {
@@ -29,7 +30,7 @@ const Register = () => {
             },
         });
 
-        console.log(res.data.data.display_url);
+        // console.log(res.data.data.display_url);
 
         if (res.data.success) {
             if (data.password.length < 6) {
@@ -57,9 +58,9 @@ const Register = () => {
                                 axiosPublic.post('/post/user', newUser)
                                     .then( async res => {
                                         toast.success("Account created successfully");
-                                        form.reset();
+                                        reset();
                                         await new Promise((resolve) => setTimeout(resolve, 1000));
-                                        navigate("/signIn");
+                                        navigate("/login");
                                     })
                                     .catch(error => console.log(error))                               
                             })

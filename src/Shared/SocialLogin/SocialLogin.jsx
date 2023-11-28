@@ -13,7 +13,25 @@ const SocialLogin = () => {
     const handleGoogleLogin = () => {
         googleLogin()
             .then(result => {
-               toast.success('Login Successfully !')
+                // console.log(result.user)
+                const newUser = {
+                    name: result.user?.displayName,
+                    email: result.user?.email,
+                    photo: result.user?.photoURL,
+                    password: 'Login with Google',
+                    role: 'common'
+                }
+
+                axiosPublic.post('/post/user', newUser)
+                    .then(async res => {
+                        await new Promise((resolve) => setTimeout(resolve, 1000));
+                        navigate(location?.state ? location.state : '/');
+                        toast.success('Login Successfully !')
+                    })
+                    .catch(error => {
+                        toast.error('Login Failed.!')
+                        console.log(error)
+                })
             })
             .catch(error => {
                 toast.error('Login Failed.!')

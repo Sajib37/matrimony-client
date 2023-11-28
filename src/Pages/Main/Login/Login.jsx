@@ -5,15 +5,20 @@ import image1 from "../../../assets/login1.png"
 import bgImage from "../../../assets/bg-image.png"
 import { Label, TextInput } from "flowbite-react";
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
+import { useAuth } from "../../../AuthProvider/AuthProvider";
 
 
 const Login = () => {
+    const { emailLogin ,resetPassword } = useAuth()
+    const navigate = useNavigate();
+    
     const [disabled, setDisabled] = useState(true)
 
     const captchaRef = useRef(null)
     const emailRef = useRef(null)
+    
 
     useEffect(() => {
         loadCaptchaEnginge(6); 
@@ -33,6 +38,35 @@ const Login = () => {
         }
     }
 
+    const handleEmailLogin = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        
+        emailLogin(email, password)
+            .then(async result => {
+                toast.success('Login SuccessFully !')
+                form.reset();
+                await new Promise((resolve) => setTimeout(resolve, 1000));
+                navigate(location?.state ? location.state : '/');
+            })
+            .catch(error =>{
+            toast.error('Login Failed !!')
+        })
+    }
+
+    const handleResetPassword = () => {
+        const email = emailRef.current.value;
+        resetPassword(email)
+            .then(result => {
+            toast.success('Check your email for new password')
+            })
+            .catch(error => {
+                toast.error('pasweord reset Failed !')
+        })
+    }
+
     return (
         <section className="mt-8 min-h-screen flex items-center py-12 md:px-10 px-4 lg:px-0" style={{backgroundImage: `url(${bgImage})` ,backgroundSize:'cover'}}>
             <Helmet>
@@ -48,7 +82,7 @@ const Login = () => {
                     </h1>
 
                     {/* Form starts here */}
-                    <form action="">
+                    <form action="" onSubmit={handleEmailLogin}>
                         <div className="mb-3">
                             <div className="mb-1 block">
                                 <Label htmlFor="input-gray" color="gray" value="Email:" />
@@ -67,7 +101,7 @@ const Login = () => {
                             <TextInput name='capctha'  ref={captchaRef}  id="input-gray" type='text' placeholder="Enter the text above" required color="gray"/>
                         </div>
                          <button onClick={handleValidate} className={`px-2 py-1 mb-2  text-white ${disabled? 'bg-[#D1A054]' : 'bg-green-600'}  rounded-lg`}>validate </button>
-                        <p  className="mb-2 text-sm font-semibold hover:cursor-pointer text-red-600">Forgot password ?</p>
+                        <p  onClick={handleResetPassword} className="mb-2 text-sm font-semibold hover:cursor-pointer text-red-600">Forgot password ?</p>
                         <button name='submit' disabled={disabled} className={`w-full   py-2 rounded-lg ${disabled ? ' text-gray-400 bg-gray-200' :'text-white bg-[#D1A054]'}`}>Login</button>
                     </form>  
                     

@@ -52,17 +52,16 @@ const Register = () => {
                     .then((result) => {
                         profileUpdate(data.name, res.data.data.display_url)
                             .then((result) => {
-                                // const newUser = { name, email, photo ,password , role:'user'}
-                                // // todo
-                                // axiosPublic.post('/post/user', newUser)
-                                //     .then( async res => {
-                                //         toast.success("Account created successfully");
-                                //         form.reset();
-                                //         await new Promise((resolve) => setTimeout(resolve, 1000));
-                                //         navigate("/signIn");
-                                //     })
-                                // .catch(error=>console.log(error))
-                                toast.success('Registration completed !')
+                                const newUser = { name:data.name, email: data.email, photo: res.data.data.display_url  ,password: data.password , role:'common'}
+                                // todo
+                                axiosPublic.post('/post/user', newUser)
+                                    .then( async res => {
+                                        toast.success("Account created successfully");
+                                        form.reset();
+                                        await new Promise((resolve) => setTimeout(resolve, 1000));
+                                        navigate("/signIn");
+                                    })
+                                    .catch(error => console.log(error))                               
                             })
                             .catch((error) => {
                                 console.log(error);

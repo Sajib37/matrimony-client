@@ -1,10 +1,13 @@
 import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { createContext, useContext, useEffect, useState } from "react";
 
-// import useAxiosPublic from "../../hooks/useAxiosPublic";
+
 import auth from "../../Firebase/firebase.config";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
+
 
 const authContext = createContext(null);
+const axiosPublic = useAxiosPublic()
 export const useAuth = () => {
     return useContext(authContext)
 }
@@ -62,21 +65,21 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
 
-            // if(currentUser){
-            //     // get token and store client
-            //     const userInfo = { email: currentUser.email };
-            //     axiosPublic.post('/jwt', userInfo)
-            //         .then(res => {
-            //             if (res.data.token) {
-            //             localStorage.setItem('access-token',res.data.token)
-            //         }
-            //         })
-            //         .catch(error => console.log(error))
-            // }
-            // else {
-            //     //remove token from local storage
-            //     localStorage.removeItem('access-token');
-            // }
+            if(currentUser){
+                // get token and store client
+                const userInfo = { email: currentUser.email };
+                axiosPublic.post('/jwt', userInfo)
+                    .then(res => {
+                        if (res.data.token) {
+                        localStorage.setItem('access-token',res.data.token)
+                    }
+                    })
+                    .catch(error => console.log(error))
+            }
+            else {
+                //remove token from local storage
+                localStorage.removeItem('access-token');
+            }
             setLoading(false);
         })
         return () => unsubscribe();

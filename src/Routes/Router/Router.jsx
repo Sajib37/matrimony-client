@@ -7,6 +7,7 @@ import ContactUs from '../../Pages/Main/ContactUs/ContactUs';
 import AboutUs from '../../Pages/Main/AbouUs/AboutUs';
 import Login from '../../Pages/Main/Login/Login';
 import Register from '../../Pages/Main/Register/Register';
+import Dashboard from '../../Layout/Dashboard';
 
 const router = createBrowserRouter([
     {
@@ -37,8 +38,17 @@ const router = createBrowserRouter([
                 path: "/register",
                 element:<Register></Register>
             }
-        ]
+        ],
+
     },
+
+    {
+        path: 'dashboard',
+        element: <Dashboard></Dashboard>,
+        children: [
+            
+        ]
+    }
   ]);
 
 export default router;

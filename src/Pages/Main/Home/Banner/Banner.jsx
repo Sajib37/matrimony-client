@@ -9,7 +9,7 @@ import slide5 from '../../../../assets/home/slide5.jpg'
 
 const Banner = () => {
     return (
-        <div className='mt-14'>
+        <div className='mt-14 font-Lato'>
             <Carousel className='text-center'>
                 <div className="lg:h-[80vh] md:h-[60vh] h-[45vh]">
                     <img className="h-full" src={slide1} />

@@ -43,7 +43,7 @@ const NavBar = () => {
             <Navbar fluid rounded className=' bg-transparent max-w-screen-xl mx-auto text-white'>
                     <Navbar.Brand className="md:mx-auto lg:mx-0 md:mb-2 lg:mb-0"  href="#">
                         <img src={logo} className="mr-1 h-6 sm:h-9 " alt="Flowbite React Logo" />
-                        <span className="self-center whitespace-nowrap text-xl font-semibold">Matrimony</span>
+                        <span className="self-center whitespace-nowrap text-xl font-semibold font-mono">Matrimony</span>
                     </Navbar.Brand>
                     <Navbar.Toggle />
                     <Navbar.Collapse className="md:mx-auto lg:mx-0">

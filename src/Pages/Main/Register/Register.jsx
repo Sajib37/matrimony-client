@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import image1 from "../../../assets/register2.png";
-import bgImage from "../../../assets/bg-image.png";
+import bgImage from "../../../assets/register-bg.jpg";
 import { FileInput, Label, TextInput } from "flowbite-react";
 import { Link, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
@@ -99,7 +99,8 @@ const Register = () => {
                 style={{
                     backgroundImage: `url(${bgImage})`,
                     backgroundSize: "cover",
-                    boxShadow: "2px 2px 5px 2px #BBBCBD",
+                    boxShadow: "2px 2px 15px 1px #A23B04",
+                    border: "none",
                 }}
             >
                 <img
@@ -109,14 +110,14 @@ const Register = () => {
                 />
 
                 <section className="w-full lg:w-1/2  mx-auto md:px-4  md:w-2/3 lg:max-w-lg rounded-lg py-6 md:py-4">
-                    <h1 className="text-3xl md:text-4xl mb-4 text-center font-semibold">
+                    <h1 className="text-3xl md:text-4xl mb-4 text-center font-semibold text-white">
                         Create a new account
                     </h1>
 
                     {/* Form starts here */}
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="mb-3">
-                            <div className="mb-1 block">
+                            <div className="mb-1 block text-white">
                                 <Label
                                     htmlFor="input-gray"
                                     color="gray"
@@ -133,7 +134,7 @@ const Register = () => {
                             />
                         </div>
                         <div className="mb-3">
-                            <div className="mb-1 block">
+                            <div className="mb-1 block text-white">
                                 <Label
                                     htmlFor="file-upload"
                                     value="Upload your photo:"
@@ -145,7 +146,7 @@ const Register = () => {
                             />
                         </div>
                         <div className="mb-3">
-                            <div className="mb-1 block">
+                            <div className="mb-1 block text-white">
                                 <Label
                                     htmlFor="input-gray"
                                     color="gray"
@@ -162,7 +163,7 @@ const Register = () => {
                             />
                         </div>
                         <div className="mb-3">
-                            <div className="mb-1 block">
+                            <div className="mb-1 block text-white">
                                 <Label
                                     htmlFor="input-gray"
                                     color="gray"
@@ -187,14 +188,14 @@ const Register = () => {
                         </button>
                     </form>
 
-                    <p className="font-ubuntu font-medium mt-4">
+                    <p className="font-ubuntu font-medium mt-4 text-white">
                         Aready have an account? Please,{" "}
                         <Link className="text-[#D1A054]" to="/login">
                             Login
                         </Link>
                     </p>
 
-                    <p className="text-center mt-2 font-semibold">
+                    <p className="text-center mt-2 font-semibold text-white">
                         Or sign up with
                     </p>
                     <SocialLogin></SocialLogin>

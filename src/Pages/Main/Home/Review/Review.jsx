@@ -4,7 +4,7 @@ import useReviews from "../../../../Hooks/useReviews";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { Navigation } from 'swiper/modules';
+import { Autoplay, Navigation } from 'swiper/modules';
 
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
@@ -28,8 +28,9 @@ const Review = () => {
 
             <div className="max-w-screen-xl mx-auto h-fit">
                 <Swiper
-                    navigation={true}
-                    modules={[Navigation]}
+                    navigation={true}                  
+                    modules={[Navigation, Autoplay]}
+                    autoplay={{ delay: 4000 }} 
                     className="mySwiper"
                 >
                     {sortedReviews.map((review, idx) => (

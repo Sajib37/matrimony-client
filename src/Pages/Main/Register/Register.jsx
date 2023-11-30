@@ -53,7 +53,14 @@ const Register = () => {
                     .then((result) => {
                         profileUpdate(data.name, res.data.data.display_url)
                             .then((result) => {
-                                const newUser = { name:data.name, email: data.email, photo: res.data.data.display_url  ,password: data.password , role:'common'}
+                                const newUser = {
+                                    name: data.name,
+                                    photo: res.data.data.display_url,
+                                    email: data.email,
+                                    password: data.password, role: 'common',
+                                    role: 'user',
+                                    member: 'normal'
+                                }
                                 // todo
                                 axiosPublic.post('/post/user', newUser)
                                     .then( async res => {

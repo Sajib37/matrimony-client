@@ -11,8 +11,11 @@ export default {
                 Normal: "#333333",
                 Primary: "#1a1a1a",
                 Secondary: "#666666",
-                Accent: "#D03801",
+                Accent: "#ff5a60",
             },
+            backgroundColor: {
+                regular : "#f7f0f1"
+            }
         },
     },
     plugins: [require('flowbite/plugin')],

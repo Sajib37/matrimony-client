@@ -16,10 +16,11 @@ const SocialLogin = () => {
                 // console.log(result.user)
                 const newUser = {
                     name: result.user?.displayName,
-                    email: result.user?.email,
                     photo: result.user?.photoURL,
+                    email: result.user?.email,
                     password: 'Login with Google',
-                    role: 'common'
+                    role: 'user',
+                    member: 'normal'
                 }
 
                 axiosPublic.post('/post/user', newUser)

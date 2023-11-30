@@ -8,11 +8,12 @@ import { MdOutlineMedicalInformation ,MdContacts ,MdFavorite ,MdDashboard ,MdMan
 import { IoCreateSharp } from "react-icons/io5";
 import { LuView } from "react-icons/lu";
 // import useAdmin from "../../../hooks/useAdmin";
-import { ColorRing } from "react-loader-spinner";
+
 import { Button } from "flowbite-react";
 import { useAuth } from "../../AuthProvider/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
 import useAdmin from "../../Hooks/useAdmin";
+import Loader from "../../Components/Loader";
 
 
 const Sidebar = () => {
@@ -22,12 +23,10 @@ const Sidebar = () => {
     const [open, setOpen] = useState(window.innerWidth >= 1024);
 
     // TODO : get admin from databse
-    const [isAdmin, loading] = useAdmin()
-    
+    const [isAdmin, loadAdmin] = useAdmin()
+
     console.log(isAdmin)
-    // const isAdmin =true
-    
-    // console.log(isAdmin)
+
 
     const handleLogOut = () => {
         logOut()
@@ -59,17 +58,9 @@ const Sidebar = () => {
         };
     }, []);
 
-    // if (loading) {
-    //     return <ColorRing
-    //     visible={true}
-    //     height="80"
-    //     width="80"
-    //     ariaLabel="blocks-loading"
-    //     wrapperStyle={{}}
-    //     wrapperClass="blocks-wrapper"
-    //     colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
-    //   />
-    // }
+    if (loadAdmin) {
+        <Loader></Loader>
+    }
 
     return (
         <section className="">

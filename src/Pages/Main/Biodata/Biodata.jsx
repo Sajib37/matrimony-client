@@ -10,27 +10,41 @@ import { RiMenu2Fill } from "react-icons/ri";
 const Biodata = () => {
 
     const [biodata, isLoading, refetch] = useBiodata();
-
     const [displayData, setDisplayData] = useState([]);
     const [totalPages, setTotalPages] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
+    const [filterGender, setFilterGender] = useState('default');
+    const [filterDivision, setFilterDivision] = useState('default');
+    const [filterAge, setFilterAge] = useState('default');
+    
 
     useEffect(() => {
         if (!isLoading) {
-            setTotalPages(Math.ceil(biodata.length / 6))
+
+            const filteredBiodata = biodata.filter((bio) => {
+                const genderMatch = filterGender === 'default' || bio.type === filterGender;
+                const divisionMatch = filterDivision === 'default' || bio.permanentDivision === filterDivision;
+                const ageMatch =
+                  filterAge === 'default' || (bio.age >= filterAge && bio.age < filterAge + 5); // Adjust as needed
+        
+                return genderMatch && divisionMatch && ageMatch;
+            });
+            
+            setTotalPages(Math.ceil(filteredBiodata.length / 6))
 
             const startIdx = (currentPage - 1) * 6;
             const endIdx = currentPage*6;
 
-            setDisplayData(biodata.slice(startIdx , endIdx))
+            setDisplayData(filteredBiodata.slice(startIdx , endIdx))
         }
-    }, [biodata, isLoading, currentPage])
+    }, [biodata, isLoading, currentPage ,filterGender, filterDivision, filterAge])
     
     const onPageChange = (page) => setCurrentPage(page);
 
     if (isLoading) {
         return "Loading..."
     }
+
 
     
     
@@ -46,12 +60,12 @@ const Biodata = () => {
                     </div>
 
                     <form className="flex flex-col mt-4">
-                        <Select defaultValue='default'  id="gender">
+                        <Select onChange={(e) => setFilterGender(e.target.value)} defaultValue='default'  id="gender">
                             <option value="default" disabled>Select Gender</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                         </Select>
-                        <Select defaultValue='default'  id="age">
+                        <Select onChange={(e) => setFilterDivision(e.target.value)} defaultValue='default'  id="age">
                             <option value="default" disabled>Select Division</option>
                             <option value="Dhaka">Dhaka</option>
                             <option value="Sylhet">Sylhet</option>
@@ -61,14 +75,14 @@ const Biodata = () => {
                             <option value="Rangpur">Rangpur</option>
                             <option value="Maymansign">Maymansign</option>
                         </Select>
-                        <Select defaultValue='default'  id="countries">
+                        <Select typeof="number" onChange={(e) => setFilterAge(parseInt(e.target.value, 10))} defaultValue='default'  id="countries">
                             <option value="default" disabled>Age range</option>
-                            <option value="pizza">20 to 25 years</option>
-                            <option value="salad">25 to 30 years</option>
-                            <option value="salad">30 to 35 years</option>
-                            <option value="salad">35 to 40 years</option>
-                            <option value="salad">40 to 45 years</option>
-                            <option value="salad">Above 45 years</option>
+                            <option value={20}>20 to 25 years</option>
+                            <option value={25}>25 to 30 years</option>
+                            <option value={30}>30 to 35 years</option>
+                            <option value={35}>35 to 40 years</option>
+                            <option value={40}>40 to 45 years</option>
+                            <option value={45}>Above 45 years</option>
                         </Select>
                     </form>
                 </aside>

@@ -6,6 +6,9 @@ import bg1 from "../../../assets/bg-image.png"
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { RiMenu2Fill } from "react-icons/ri";
+import banner2 from "../../../assets/cover1.jpg"
+import BannerCover from "../../../Shared/BannerCover/BannerCover";
+import { Helmet } from "react-helmet-async";
 
 const Biodata = () => {
 
@@ -49,17 +52,19 @@ const Biodata = () => {
     
     
     return (
-        <section className="mt-14 py-12" style={{backgroundImage: `url(${bg1})` , backgroundSize:"cover"}}>
-            
-            <SectionTitle heading={"Biodatas"} subHeading={"Find your match among our diverse members  your ideal connection awaits"}></SectionTitle>
-            
-            <section className="flex flex-col lg:flex-row relative"> 
-                <aside className="px-4 mb-4 mt-4">
+        <section className="mt-14 pb-12" style={{backgroundImage: `url(${bg1})` , backgroundSize:"cover"}}>
+            <Helmet>
+                <title>Matrimony || Biodatas</title>
+            </Helmet>
+            {/* <SectionTitle heading={"Biodatas"} subHeading={"Find your match among our diverse members  your ideal connection awaits"}></SectionTitle> */}
+            <BannerCover image={banner2} heading={'Biodatas'} subHeading={'Find your match among our diverse members'}></BannerCover>
+            <section className="flex mt-10 flex-col lg:flex-row relative"> 
+                <aside className="px-4 mb-6 mt-4">
                     <div className="py-2 mx-auto w-full lg:w-72 bg-white">
                         <h1 className="text-xl text-center font-bold text-Primary">Filter Biodata</h1>
                     </div>
 
-                    <form className="flex flex-col mt-4">
+                    <form className="flex flex-col mt-2">
                         <Select onChange={(e) => setFilterGender(e.target.value)} defaultValue='default'  id="gender">
                             <option value="default" disabled>Select Gender</option>
                             <option value="male">Male</option>

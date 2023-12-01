@@ -1,12 +1,13 @@
-import { Pagination } from "flowbite-react";
+import { Label, Pagination, Radio, Select } from "flowbite-react";
 import MemberCard from "../../../Components/MemberCard";
 import SectionTitle from "../../../Components/SectionTitle";
 import useBiodata from "../../../Hooks/useBiodata";
 import bg1 from "../../../assets/bg-image.png"
 import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { RiMenu2Fill } from "react-icons/ri";
 
 const Biodata = () => {
-
 
     const [biodata, isLoading, refetch] = useBiodata();
 
@@ -30,20 +31,52 @@ const Biodata = () => {
     if (isLoading) {
         return "Loading..."
     }
+
     
     
     return (
-        <section className="mt-14">
-            <section className="flex ">
-                <aside className="w-72 hidden lg:block  ">
-                    <div>
-
+        <section className="mt-14 py-12" style={{backgroundImage: `url(${bg1})` , backgroundSize:"cover"}}>
+            
+            <SectionTitle heading={"Biodatas"} subHeading={"Find your match among our diverse members  your ideal connection awaits"}></SectionTitle>
+            
+            <section className="flex flex-col lg:flex-row relative"> 
+                <aside className="px-4 mb-4 mt-4">
+                    <div className="py-2 mx-auto w-full lg:w-72 bg-white">
+                        <h1 className="text-xl text-center font-bold text-Primary">Filter Biodata</h1>
                     </div>
+
+                    <form className="flex flex-col mt-4">
+                        <Select defaultValue='default'  id="gender">
+                            <option value="default" disabled>Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </Select>
+                        <Select defaultValue='default'  id="age">
+                            <option value="default" disabled>Select Division</option>
+                            <option value="Dhaka">Dhaka</option>
+                            <option value="Sylhet">Sylhet</option>
+                            <option value="Chittagong">Chittagong</option>
+                            <option value="Rajshahi">Rajshahi</option>
+                            <option value="Khulna">Khulna</option>
+                            <option value="Rangpur">Rangpur</option>
+                            <option value="Maymansign">Maymansign</option>
+                        </Select>
+                        <Select defaultValue='default'  id="countries">
+                            <option value="default" disabled>Age range</option>
+                            <option value="pizza">20 to 25 years</option>
+                            <option value="salad">25 to 30 years</option>
+                            <option value="salad">30 to 35 years</option>
+                            <option value="salad">35 to 40 years</option>
+                            <option value="salad">40 to 45 years</option>
+                            <option value="salad">Above 45 years</option>
+                        </Select>
+                    </form>
                 </aside>
 
+
+
                 <div className="w-full">
-                    <SectionTitle heading={"Biodatas"} subHeading={"Find your match among our diverse members  your ideal connection awaits"}></SectionTitle>
-                    <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-6">
+                    <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:px-6">
                         
                         {
                             displayData.map((bio,idx)=><MemberCard key={idx} biodata={bio}></MemberCard>)

@@ -1,6 +1,7 @@
 import { Card } from "flowbite-react";
 import { AwesomeButton } from "react-awesome-button";
 import 'react-awesome-button/dist/styles.css';
+import { Link } from "react-router-dom";
 
 
 const MemberCard = ({ biodata }) => {
@@ -24,7 +25,7 @@ const MemberCard = ({ biodata }) => {
                         <h1><span className="font-semibold text-black text-base">Sex:</span> {biodata.type}</h1> 
                         <h1><span className="font-semibold text-black text-base">Age:</span> { biodata.age} years</h1>
                     </div>
-                    <span className="mt-2"><AwesomeButton  type="secondary">View Profile</AwesomeButton></span>
+                    <Link to={`/profile/${biodata.email}`} className="mt-2"><AwesomeButton  type="secondary">View Profile</AwesomeButton></Link>
                 </div>
             </div>
         </div>

@@ -7,7 +7,7 @@ const useBiodata = () => {
     
     
     const { data : biodata , refetch ,isLoading} = useQuery({
-        queryKey: ['menus'],
+        queryKey: ['biodata'],
         queryFn: async () => {
             const result = await axiosPublic.get('/biodata')
             return result.data;

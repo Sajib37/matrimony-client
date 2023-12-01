@@ -1,0 +1,44 @@
+[
+    {
+      "role": "Founder and CEO",
+      "name": "Sarah Patel",
+      "bio": "Passionate about bringing hearts together.",
+      "image": "https://i.ibb.co/QcCJTcF/ceo-1.jpg",
+      "email": "sarah@example.com"
+    },
+    {
+      "role": "CTO",
+      "name": "Alex Rodriguez",
+      "bio": "Tech enthusiast leading our innovation.",
+      "image": "https://i.ibb.co/5c7QH22/cto-1.jpg",
+      "email": "alex@example.com"
+    },
+    {
+      "role": "Customer Success",
+      "name": "Priya Sharma",
+      "bio": "Dedicated to ensuring a seamless experience.",
+      "image": "https://i.ibb.co/B3PnMCy/female-1.jpg",
+      "email": "priya@example.com"
+    },
+    {
+      "role": "Marketing Manager",
+      "name": "Kevin Thompson",
+      "bio": "Bringing creativity to our brand.",
+      "image": "https://i.ibb.co/ymjCy83/manager-1.jpg",
+      "email": "kevin@example.com"
+    },
+    {
+      "role": "Senior Developer",
+      "name": "Rajesh Verma",
+      "bio": "Coding maestro crafting robust systems.",
+      "image": "https://i.ibb.co/HFrw6CX/developer-1.jpg",
+      "email": "rajesh@example.com"
+    },
+    {
+      "role": "Designer",
+      "name": "Alicia Smith",
+      "bio": "Bringing visual appeal to our platform.",
+      "image": "https://i.ibb.co/F5J2B0n/designer-1.jpg",
+      "email": "alicia@example.com"
+    }
+  ]

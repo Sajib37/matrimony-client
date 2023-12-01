@@ -11,7 +11,7 @@ const MemberCard = ({ biodata }) => {
 
             <div className="max-w-sm md:max-w-xs  lg:max-w-sm bg-[#F3F3F3] mx-auto rounded-md" style={{boxShadow: "1px 1px 5px 2px #cccccc"}}>
                 <div>
-                    <img className="w-full h-52" src={biodata.photo} alt="" />
+                    <img className="w-full h-56" src={biodata.photo} alt="" />
                 </div>
                 <div className='flex flex-col p-4'>
                     <h1 className='text-xl font-semibold text-Primary'>{biodata.name}</h1>

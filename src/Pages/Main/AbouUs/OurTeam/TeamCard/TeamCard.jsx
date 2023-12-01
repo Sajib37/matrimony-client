@@ -4,7 +4,7 @@ const TeamCard = ({ member }) => {
     
     return (
         <div className='mx-auto max-w-md'>
-            <img className='w-52 mx-auto h-52 rounded-full' src={member.image} alt="" />
+            <img className='w-52 mx-auto h-52 border-2 border-black rounded-full' src={member.image} alt="" />
             <div className='text-center font-semibold'>
                 <h1 className='text-xl mb-1 font-bold text-Accent'>{ member.name}</h1>
                 <h1>Role: {member.role}</h1>

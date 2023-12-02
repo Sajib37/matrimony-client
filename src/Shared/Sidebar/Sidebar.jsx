@@ -68,7 +68,7 @@ const Sidebar = () => {
                 <RiMenu2Fill />
             </button>
             <Toaster></Toaster>
-            <div className="w-72 h-screen bg-[#EDEDED] hidden lg:block">
+            <div className="w-72 h-screen bg-white hidden lg:block">
 
             </div>
 

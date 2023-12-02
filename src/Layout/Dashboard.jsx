@@ -10,7 +10,7 @@ const Dashboard = () => {
                 <title>Bistro Boss || Dashboard</title>
             </Helmet>
 
-            <div className="flex">
+            <div className="flex ">
                 <Sidebar></Sidebar>
                 <Outlet></Outlet>
             </div>

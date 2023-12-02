@@ -80,7 +80,7 @@ const Sidebar = () => {
                     style={{ overflowY: 'auto' }}
             >
                 <div className=" flex flex-col mb-8 items-center">
-                    <h1 className="text-2xl font-bold font-Lato text-Primary">Matrimony</h1>
+                    <h1 className="text-3xl font-bold font-Lato text-blue-800">Matrimony</h1>
                     
                 </div>
 

@@ -8,9 +8,14 @@ import { AwesomeButton } from "react-awesome-button";
 import 'react-awesome-button/dist/styles.css';
 import { Button } from "flowbite-react";
 import { GiRoyalLove } from "react-icons/gi";
+import { useAuth } from "../../AuthProvider/AuthProvider";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const Profile = () => {
     const { email } = useParams();
+    const { user } = useAuth()
+    const axiosPublic = useAxiosPublic();
 
     const [profileInfo, setProfileInfo] = useState({})
     const [recommenedBiodata, setRecommenedBiodata] = useState([])
@@ -31,7 +36,40 @@ const Profile = () => {
     if (isLoading) {
         return <Loader></Loader>;
     }
-    console.log(profileInfo)
+    
+    const handleFavourite = () => {
+        const newFavourite = {
+            email: user.email,
+            name: profileInfo.name,
+            biodataId: profileInfo.biodataId,
+            permanentDivision: profileInfo.permanentDivision,
+            occupation: profileInfo.occupation
+        }
+        
+        axiosPublic.post('/favourite', newFavourite)
+            .then(res => {
+                if (res.data.message === "already added") {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "This profile already added to your favourite list",
+                      });
+                }
+
+                else {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Your biodata has been saved",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }   
+                
+            })
+            .catch(err => console.log(err))
+        
+    }
 
     return (
         <section className="mt-14 py-10 flex flex-col lg:flex-row justify-between gap-2 bg-gray-200 ">
@@ -40,11 +78,11 @@ const Profile = () => {
             </Helmet>
 
             <section className="w-full">
-                <h1 className="text-center text-3xl md:text-4xl font-bold text-Primary mb-4">Profile of <span className="text-blue-800">{profileInfo.name}</span></h1>
+                {/* <h1 className="text-center text-3xl md:text-4xl font-bold text-Primary mb-4">Profile of <span className="text-blue-800">{profileInfo.name}</span></h1> */}
                 
                 <section className="">
                     <div className=" ">
-                        <img className="w-60 h-60 md:w-72 md:h-72 border-4 border-black rounded-full mx-auto" src={profileInfo.photo} alt="" />
+                        <img className="w-52 h-52 md:w-60 md:h-60 border-4 border-black rounded-full mx-auto" src={profileInfo.photo} alt="" />
                         <div className="text-center">
                             <h1 className="text-xl font-bold text-Accent">Biodata ID: { profileInfo.biodataId}</h1>
                             <h1 className="font-bold">Full Name: {profileInfo.name}</h1>
@@ -99,7 +137,7 @@ const Profile = () => {
                     </div>
                 </section>
 
-                <Button className="mt-6 mx-auto" color="warning">Add to favourite <GiRoyalLove className="text-2xl ml-2" /></Button>
+                <Button onClick={handleFavourite} className="mt-6 mx-auto" color="warning">Add to favourite <GiRoyalLove className="text-2xl ml-2" /></Button>
             </section>
 
             <section className=" mt-10 lg:mt-0 lg:mr-10 w-full lg:w-[40%]">

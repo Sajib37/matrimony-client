@@ -37,14 +37,14 @@ const ViewBiodata = () => {
 
 
             <section className="w-full my-10">
-                <h1 className="text-center text-3xl md:text-4xl font-bold text-Primary mb-4">Profile of <span className="text-blue-800">{profileInfo.name}</span></h1>
+                <h1 className="text-center text-3xl md:text-4xl font-bold text-Accent mb-4">Identity Canvas</h1>
                 
                 <section className="">
                     <div className=" ">
-                        <img className="w-60 h-60 md:w-72 md:h-72 border-4 border-black rounded-full mx-auto" src={profileInfo.photo} alt="" />
+                        <img className="w-52 h-52 md:w-60 md:h-60 border-4 border-black rounded-full mx-auto" src={profileInfo.photo} alt="" />
                         <div className="text-center">
                             <h1 className="text-xl font-bold text-Accent">Biodata ID: { profileInfo.biodataId}</h1>
-                            <h1 className="font-bold">Full Name: {profileInfo.name}</h1>
+                            <h1 className="font-bold text-lg">Full Name: {profileInfo.name}</h1>
                             <h1 className="font-bold">Occupatio: { profileInfo.occupation}</h1>
                             
                         </div>

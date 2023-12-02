@@ -60,7 +60,7 @@ const router = createBrowserRouter([
                 element:<CreateBiodata></CreateBiodata>
             },
             {
-                path: "viewBiodata",
+                path: "viewBiodata/",
                 element:<ViewBiodata></ViewBiodata>
             },
             {

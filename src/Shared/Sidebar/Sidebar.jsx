@@ -80,8 +80,8 @@ const Sidebar = () => {
                     style={{ overflowY: 'auto' }}
             >
                 <div className=" flex flex-col mb-8 items-center">
-                    <h1 className="text-2xl font-bold font-Lato text-Primary">BISTRO BOSS</h1>
-                    <h2 className="text-lg font-semibold text-Secondary">Restaurant</h2>
+                    <h1 className="text-2xl font-bold font-Lato text-Primary">Matrimony</h1>
+                    
                 </div>
 
                 <section className="flex flex-col gap-4">

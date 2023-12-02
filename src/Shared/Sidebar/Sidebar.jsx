@@ -25,7 +25,7 @@ const Sidebar = () => {
     // TODO : get admin from databse
     const [isAdmin, loadAdmin] = useAdmin()
 
-    console.log(isAdmin)
+    // console.log(isAdmin)
 
 
     const handleLogOut = () => {

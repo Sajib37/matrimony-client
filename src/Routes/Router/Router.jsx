@@ -13,6 +13,8 @@ import ViewBiodata from '../../Pages/Dashboard/ViewBiodata/ViewBiodata';
 import FavouriteBiodata from '../../Pages/Dashboard/FavouriteBiodata/FavouriteBiodata';
 import ContactRequest from '../../Pages/Dashboard/ContactRequest/ContactRequest';
 import Profile from '../../Shared/Profile/Profile';
+import ApprovedPremium from '../../Pages/Dashboard/approvedPremium/approvedPremium';
+import ManageUser from '../../Pages/Dashboard/ManageUser/ManageUser';
 
 const router = createBrowserRouter([
     {
@@ -55,6 +57,8 @@ const router = createBrowserRouter([
         path: 'dashboard',
         element: <Dashboard></Dashboard>,
         children: [
+            
+            // user routes
             {
                 path: "createBiodata",
                 element:<CreateBiodata></CreateBiodata>
@@ -70,6 +74,17 @@ const router = createBrowserRouter([
             {
                 path: "contactRequest",
                 element:<ContactRequest></ContactRequest>
+            },
+
+
+            // admin routes
+            {
+                path: "approvedPremium",
+                element: <ApprovedPremium></ApprovedPremium>
+            },
+            {
+                path: "manage",
+                element: <ManageUser></ManageUser>
             }
         ]
     }

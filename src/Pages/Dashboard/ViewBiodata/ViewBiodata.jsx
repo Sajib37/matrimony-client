@@ -8,6 +8,8 @@ import { useEffect } from 'react';
 import { Button } from 'flowbite-react';
 import { GiRoyalLove } from 'react-icons/gi';
 import { AwesomeButton } from 'react-awesome-button';
+import Swal from 'sweetalert2';
+import useAxiosPublic from '../../../Hooks/useAxiosPublic';
 
 const ViewBiodata = () => {
 
@@ -15,6 +17,8 @@ const ViewBiodata = () => {
     
     const [biodata, isLoading] = useBiodata();
     const [profileInfo, setProfileInfo] = useState({})
+
+    const axiosPublic =useAxiosPublic()
 
     useEffect(() => {
         if (biodata && user.email) {
@@ -28,6 +32,64 @@ const ViewBiodata = () => {
     }
 
     console.log(profileInfo)
+
+    const handleRequest = (profile) => {
+        const requesterData = {
+            name: profile.name,
+            email: profile.email,
+            biodataId : profile.biodataId
+        }
+
+        Swal.fire({
+            title: "Are you sure to make premium?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, make premium!"
+        }).then((result) => {
+              
+            if (result.isConfirmed) {
+                // axiosPublic.delete(`/favourite/${profile.biodataId}/${profile.email}`)
+                //     .then(res => {
+                //         if (res.data.deletedCount > 0) {
+                //             refetch();
+                //         Swal.fire({
+                //             title: "Deleted!",
+                //             text: "Your file has been deleted.",
+                //             icon: "success"
+                //         });
+                //         }
+                //     })
+                //     .catch(err => console.log(err))
+
+                axiosPublic.post("/premium", requesterData)
+                    .then(res => {
+                        if (res.data.meassage === 'already requested') {
+                            Swal.fire({
+                                icon: "error",
+                                title: "Oops...",
+                                text: "You already requested . wait for the admin response",                               
+                              });
+                        }
+                        else {
+                            Swal.fire({
+                                position: "top-end",
+                                icon: "success",
+                                title: "Your requested send to the Admin",
+                                showConfirmButton: false,
+                                timer: 1500
+                              });
+                        }
+                    })
+                    .catch(err => console.log(err))
+                
+
+              }          
+          });
+    }
+    // 
 
     return (
         <section className='w-full'>
@@ -94,7 +156,7 @@ const ViewBiodata = () => {
                     </div>
                 </section>
 
-                <div className='flex justify-center mt-8 text-lg'><AwesomeButton  type="secondary">Request for premium member</AwesomeButton></div>
+                <div className='flex justify-center mt-8 text-lg'><span onClick={()=>handleRequest(profileInfo)}><AwesomeButton  type="secondary">Request for premium member</AwesomeButton></span></div>
             </section>
             
         </section>

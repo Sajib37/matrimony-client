@@ -40,7 +40,7 @@ const CreateBiodata = () => {
     console.log(singleBio)
 
     const onSubmit = async (data) => {
-        console.log(data.photo)
+        // console.log(data.photo)
         const imageFile = { image: data.photo[0] };
         // console.log(imageFile)
         const res = await axiosPublic.post(image_hosting_api, imageFile, {
@@ -48,6 +48,8 @@ const CreateBiodata = () => {
                 "content-type": "multipart/form-data",
             },
         });
+
+        console.log(res.data.data.display_url)
 
         const newBio = {
             name: data.name,

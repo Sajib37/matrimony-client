@@ -95,14 +95,14 @@ const Sidebar = () => {
                                     </div>
                                 </NavLink>
 
-                                <NavLink to='manageUser' className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "text-Accent" : "mb-2"}>
+                                <NavLink to='manage' className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "text-Accent" : "mb-2"}>
                                     <div className="flex gap-2 w-56 mx-auto ">
                                         <span className="text-2xl"><MdManageAccounts /></span>
                                         <h1 className="md:text-base font-semibold text-sm  uppercase">manage users</h1>
                                     </div>
                                 </NavLink>
 
-                                <NavLink to='approvePremium' className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "text-Accent" : "mb-2"}>
+                                <NavLink to='approvedPremium' className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "text-Accent" : "mb-2"}>
                                     <div className="flex gap-2 w-56 mx-auto">
                                         <span className="text-2xl"><MdApproval /></span>
                                         <h1 className="md:text-base font-semibold text-sm  uppercase">Approve premium</h1>

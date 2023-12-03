@@ -47,7 +47,7 @@ const FavouriteBiodata = () => {
     const handleDelet = (profile) => {
         Swal.fire({
             title: "Are you sure?",
-            text: "You won't be able to revert this!",
+            text: "You can again to revert this!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
@@ -81,7 +81,7 @@ const FavouriteBiodata = () => {
                 <SectionTitle  subHeading={'Your Handpicked Selections'} heading={'Favorite Profiles'}></SectionTitle>    
                 <div className="lg:w-[70%] bg-white py-6 md:py-8 lg:py-10 px-1 md:px-8 lg:px-10  w-full md:w-[90%]  mx-auto ">
  
-                        <h1 className="text-2xl font-bold">Total Items: </h1>
+                    <h1 className="text-2xl font-bold">Total Favourite Profile: { profiles.length}</h1>
 
                     <table className=" w-full mt-8">
                         <thead>
@@ -95,6 +95,7 @@ const FavouriteBiodata = () => {
                         </thead>
                         <tbody>
                             {
+                                profiles &&
                                 profiles.map((profile, idx) =>
                                     <tr key={idx} className={idx % 2 == 0 ? "bg-white" : "bg-gray-100"}>
                                         <td className="py-2 md:font-semibold text-center">{ profile.name}</td>

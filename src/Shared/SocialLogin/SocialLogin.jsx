@@ -1,13 +1,14 @@
 import toast, { Toaster } from "react-hot-toast";
 import { BsGoogle } from "react-icons/bs";
 import { useAuth } from "../../AuthProvider/AuthProvider";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const SocialLogin = () => {
 
     const { googleLogin } = useAuth();
     const navigate = useNavigate()
+    const location =useLocation()
     const axiosPublic = useAxiosPublic();
 
     const handleGoogleLogin = () => {
@@ -26,6 +27,7 @@ const SocialLogin = () => {
                 axiosPublic.post('/post/user', newUser)
                     .then(async res => {
                         await new Promise((resolve) => setTimeout(resolve, 1000));
+                        // console.log(location.state)
                         navigate(location?.state ? location.state : '/');
                         toast.success('Login Successfully !')
                     })

@@ -74,7 +74,7 @@ const Sidebar = () => {
 
             <aside
                 onClick={handleOpen}
-                className={`w-72 fixed top-0 z-20 left-0  bg-[#EDEDED] border-r-4  border-[#929191] text-[#333333] pt-4 h-screen transition-transform duration-700 ease-in-out ${
+                className={`w-72 fixed top-0 z-20 left-0  bg-[#ff5a60] border-r-4  border-[#aa2b30] text-[#333333] pt-4 h-screen transition-transform duration-700 ease-in-out ${
                     open ? "translate-x-0" : "-translate-x-full"
                     }`}
                     style={{ overflowY: 'auto' }}
@@ -84,32 +84,32 @@ const Sidebar = () => {
                     
                 </div>
 
-                <section className="flex flex-col gap-4">
+                <section className="flex flex-col gap-4 text-white">
                     {
                         isAdmin ? 
                         <>
-                                <NavLink to='adminDashboard' className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "text-Accent" : "mb-2"}>
+                                <NavLink to='adminHome' className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "text-black" : "mb-2"}>
                                     <div className="flex gap-2 w-56 mx-auto">
                                         <span className="text-2xl"><MdDashboard /></span>
                                         <h1 className="md:text-base font-semibold text-sm  uppercase">Admin Dashboard</h1>
                                     </div>
                                 </NavLink>
 
-                                <NavLink to='manage' className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "text-Accent" : "mb-2"}>
+                                <NavLink to='manage' className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "text-black" : "mb-2"}>
                                     <div className="flex gap-2 w-56 mx-auto ">
                                         <span className="text-2xl"><MdManageAccounts /></span>
                                         <h1 className="md:text-base font-semibold text-sm  uppercase">manage users</h1>
                                     </div>
                                 </NavLink>
 
-                                <NavLink to='approvedPremium' className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "text-Accent" : "mb-2"}>
+                                <NavLink to='approvedPremium' className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "text-black" : "mb-2"}>
                                     <div className="flex gap-2 w-56 mx-auto">
                                         <span className="text-2xl"><MdApproval /></span>
                                         <h1 className="md:text-base font-semibold text-sm  uppercase">Approve premium</h1>
                                     </div>
                                 </NavLink>
 
-                                <NavLink to='approveRequest' className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "text-Accent" : "mb-2"}>
+                                <NavLink to='approvedRequest' className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "text-black" : "mb-2"}>
                                     <div className="flex gap-2 w-56 mx-auto">
                                         <span className="text-2xl"><MdOutlineRequestQuote /></span>
                                         <h1 className="md:text-base font-semibold text-sm  uppercase">Approve request</h1>
@@ -121,35 +121,35 @@ const Sidebar = () => {
                             </>
                             :
                             <>
-                                <NavLink to='userHome' className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "text-Accent" : "mb-2"}>
+                                <NavLink to='userHome' className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "text-black" : "mb-2"}>
                                     <div className="flex gap-2 w-56 mx-auto">
                                         <span className="text-2xl"><FaHome /></span>
                                         <h1 className="md:text-base font-semibold text-sm  uppercase">User Home</h1>
                                     </div>
                                 </NavLink>
 
-                                <NavLink to='createBiodata' className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "text-Accent" : "mb-2"}>
+                                <NavLink to='createBiodata' className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "text-black" : "mb-2"}>
                                     <div className="flex gap-2 w-56 mx-auto">
                                         <span className="text-2xl"><IoCreateSharp /></span>
                                         <h1 className="md:text-base font-semibold text-sm  uppercase">Create or Edit Biodata</h1>
                                     </div>
                                 </NavLink>
 
-                                <NavLink to='viewBiodata' className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "text-Accent" : "mb-2"}>
+                                <NavLink to='viewBiodata' className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "text-black" : "mb-2"}>
                                     <div className="flex gap-2 w-56 mx-auto">
                                         <span className="text-2xl"><LuView /></span>
                                         <h1 className="md:text-base font-semibold text-sm  uppercase">View My biodata</h1>
                                     </div>
                                 </NavLink>
 
-                                <NavLink to='contactRequest' className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "text-Accent" : "mb-2"}>
+                                <NavLink to='contactRequest' className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "text-black" : "mb-2"}>
                                     <div className="flex gap-2 w-56 mx-auto">
                                         <span className="text-2xl"><MdContacts /></span>
                                         <h1 className="md:text-base font-semibold text-sm  uppercase">my Contact request</h1>
                                     </div>
                                 </NavLink>
 
-                                <NavLink to='favouriteBiodata' className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "text-Accent" : "mb-2"}>
+                                <NavLink to='favouriteBiodata' className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "text-black" : "mb-2"}>
                                     <div className="flex gap-2 w-56 mx-auto">
                                         <span className="text-2xl"><MdFavorite /></span>
                                         <h1 className="md:text-base font-semibold text-sm  uppercase">Favourite biodata</h1>
@@ -165,29 +165,29 @@ const Sidebar = () => {
 
                 <hr className="my-8 border-[#929191]" />
 
-                <section className="flex flex-col gap-4">
-                    <NavLink to='/' className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "text-Accent" : "mb-2"}>
+                <section className="flex flex-col gap-4 text-white">
+                    <NavLink to='/' className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "text-black" : "mb-2"}>
                         <div className="flex gap-2 w-56 mx-auto">
                             <span className="text-2xl"><FaHome /></span>
                             <h1 className="md:text-base font-semibold text-sm  uppercase"> Home</h1>
                         </div>
                     </NavLink>
 
-                    <NavLink to='/biodata' className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "text-Accent" : "mb-2"}>                        
+                    <NavLink to='/biodata' className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "text-black" : "mb-2"}>                        
                         <div className="flex gap-2 w-56 mx-auto">
                             <span className="text-2xl"><FaDatabase></FaDatabase></span>
                             <h1 className="md:text-base font-semibold text-sm  uppercase"> Biodatas</h1>
                         </div>
                     </NavLink>
 
-                    <NavLink to='/about' className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "text-Accent" : "mb-2"}>                       
+                    <NavLink to='/about' className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "text-black" : "mb-2"}>                       
                         <div className="flex gap-2 w-56 mx-auto">
                             <span className="text-2xl"><MdOutlineMedicalInformation /></span>
                             <h1 className="md:text-base font-semibold text-sm  uppercase"> About Us</h1>
                         </div>
                     </NavLink>
 
-                    <NavLink to='/contact' className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "text-Accent" : "mb-2"}>
+                    <NavLink to='/contact' className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "text-black" : "mb-2"}>
                         <div className="flex gap-2 w-56 mx-auto">
                             <span className="text-2xl"><MdEmail /></span>
                             <h1 className="md:text-base font-semibold text-sm  uppercase"> Contact us</h1>

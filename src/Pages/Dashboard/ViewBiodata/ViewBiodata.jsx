@@ -18,6 +18,8 @@ const ViewBiodata = () => {
     const [biodata, isLoading] = useBiodata();
     const [profileInfo, setProfileInfo] = useState({})
 
+    
+
     const axiosPublic =useAxiosPublic()
 
     useEffect(() => {
@@ -51,18 +53,6 @@ const ViewBiodata = () => {
         }).then((result) => {
               
             if (result.isConfirmed) {
-                // axiosPublic.delete(`/favourite/${profile.biodataId}/${profile.email}`)
-                //     .then(res => {
-                //         if (res.data.deletedCount > 0) {
-                //             refetch();
-                //         Swal.fire({
-                //             title: "Deleted!",
-                //             text: "Your file has been deleted.",
-                //             icon: "success"
-                //         });
-                //         }
-                //     })
-                //     .catch(err => console.log(err))
 
                 axiosPublic.post("/premium", requesterData)
                     .then(res => {

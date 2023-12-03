@@ -5,7 +5,7 @@ import image1 from "../../../assets/login1.png"
 import bgImage from "../../../assets/loginbg1.jpg"
 import { Label, TextInput } from "flowbite-react";
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../../../AuthProvider/AuthProvider";
 
@@ -13,6 +13,7 @@ import { useAuth } from "../../../AuthProvider/AuthProvider";
 const Login = () => {
     const { emailLogin ,resetPassword } = useAuth()
     const navigate = useNavigate();
+    const location = useLocation()
     
     const [disabled, setDisabled] = useState(true)
 

@@ -7,7 +7,7 @@ const Dashboard = () => {
     return (
         <section className="bg-white text-Normal">
             <Helmet>
-                <title>Bistro Boss || Dashboard</title>
+                <title>Matrimony || Dashboard</title>
             </Helmet>
 
             <div className="flex ">

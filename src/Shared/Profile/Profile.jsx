@@ -19,22 +19,34 @@ const Profile = () => {
 
     const [profileInfo, setProfileInfo] = useState({})
     const [recommenedBiodata, setRecommenedBiodata] = useState([])
+    const [userBio , setUserBio]=useState({})
 
-    const [biodata, isLoading] = useBiodata();
+    const [biodata, isLoading ,refetch] = useBiodata();
 
     useEffect(() => {
         if (biodata) {
             const profileData = biodata.find(bio => bio.email === email);
             setProfileInfo(profileData);
+            if (user.email) {
+                const userData = biodata.find(bio => bio.email === user.email);
+                setUserBio(userData);
+            }
             if (profileInfo) {
                 const displayData = biodata.filter(bio => bio.type === profileData.type && bio.biodataId !== profileData.biodataId)
                 setRecommenedBiodata(displayData)
             }
         }
-    }, [email, biodata]);
+    }, [email, biodata , user.email]);
+
+    
+    
 
     if (isLoading) {
         return <Loader></Loader>;
+    }
+
+    if (user.email) {
+        console.log(userBio)
     }
     
     const handleFavourite = () => {
@@ -128,11 +140,18 @@ const Profile = () => {
                         <div>
                             <h1 className="text-xl md:text-2xl font-bold mb-1 font-Lato text-blue-800">Contact Information:</h1>
 
-                            {/* TODO Condition aplly for premium members */}
-                            <div>
-                                <h1 className="text-red-600 font-semibold text-sm mt-2">Unlock exclusive contact details with a premium membership.</h1>
-                                <AwesomeButton  type="secondary">Request for contact info.</AwesomeButton>
-                            </div>
+                            {
+                                user.email && userBio?.member === 'premium' ?
+                                    <div>
+                                        <h1 className="font-semibold">Phone number: {profileInfo.phone}</h1>
+                                        <h1 className="font-semibold">Email : { profileInfo.email}</h1>
+                                    </div>
+                                    :
+                                    <div>
+                                        <h1 className="font-semibold text-red-700">You must be premium member <br /> Or  </h1>
+                                        <div className='flex justify-center mt-8 text-lg'><AwesomeButton  type="secondary">request for contact Info</AwesomeButton></div>
+                                    </div>
+                            }
                         </div>
                     </div>
                 </section>

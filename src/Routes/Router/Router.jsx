@@ -15,6 +15,11 @@ import ContactRequest from '../../Pages/Dashboard/ContactRequest/ContactRequest'
 import Profile from '../../Shared/Profile/Profile';
 import ApprovedPremium from '../../Pages/Dashboard/approvedPremium/approvedPremium';
 import ManageUser from '../../Pages/Dashboard/ManageUser/ManageUser';
+import PrivateRouter from '../PrivateRouter/PrivateRouter';
+import AdminRoute from '../AdminRoute/AdminRoute';
+import AdminHome from '../../Pages/Dashboard/AdminHome/AdminHome';
+import UserHome from '../../Pages/Dashboard/UserHome/UserHome';
+import ApprovedRequest from '../../Pages/Dashboard/ApprovedRequest/ApprovedRequest';
 
 const router = createBrowserRouter([
     {
@@ -47,7 +52,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/profile/:email",
-                element:<Profile></Profile>
+                element:<PrivateRouter><Profile></Profile></PrivateRouter>
             }
         ],
 
@@ -60,31 +65,44 @@ const router = createBrowserRouter([
             
             // user routes
             {
+                path: "userHome",
+                element: <UserHome></UserHome>
+            },
+
+            {
                 path: "createBiodata",
-                element:<CreateBiodata></CreateBiodata>
+                element:<PrivateRouter><CreateBiodata></CreateBiodata></PrivateRouter>
             },
             {
                 path: "viewBiodata/",
-                element:<ViewBiodata></ViewBiodata>
+                element:<PrivateRouter><ViewBiodata></ViewBiodata></PrivateRouter>
             },
             {
                 path: "favouriteBiodata",
-                element: <FavouriteBiodata></FavouriteBiodata>
+                element: <PrivateRouter><FavouriteBiodata></FavouriteBiodata></PrivateRouter>
             },
             {
                 path: "contactRequest",
-                element:<ContactRequest></ContactRequest>
+                element:<PrivateRouter><ContactRequest></ContactRequest></PrivateRouter>
             },
 
 
             // admin routes
             {
+                path: "adminHome",
+                element:<AdminRoute><AdminHome></AdminHome></AdminRoute>
+            },
+            {
                 path: "approvedPremium",
-                element: <ApprovedPremium></ApprovedPremium>
+                element: <AdminRoute><ApprovedPremium></ApprovedPremium></AdminRoute>
             },
             {
                 path: "manage",
-                element: <ManageUser></ManageUser>
+                element: <AdminRoute><ManageUser></ManageUser></AdminRoute>
+            },
+            {
+                path: "approvedRequest",
+                element: <AdminRoute><ApprovedRequest></ApprovedRequest></AdminRoute>
             }
         ]
     }

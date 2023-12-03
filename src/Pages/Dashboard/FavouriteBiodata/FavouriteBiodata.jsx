@@ -81,7 +81,9 @@ const FavouriteBiodata = () => {
                 <SectionTitle  subHeading={'Your Handpicked Selections'} heading={'Favorite Profiles'}></SectionTitle>    
                 <div className="lg:w-[70%] bg-white py-6 md:py-8 lg:py-10 px-1 md:px-8 lg:px-10  w-full md:w-[90%]  mx-auto ">
  
-                    <h1 className="text-2xl font-bold">Total Favourite Profile: { profiles.length}</h1>
+                    {
+                        profiles && <h1 className="text-2xl font-bold">Total Favourite Profile: { profiles.length}</h1>
+                    }
 
                     <table className=" w-full mt-8">
                         <thead>

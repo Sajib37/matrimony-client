@@ -4,10 +4,12 @@ import toast, { Toaster } from 'react-hot-toast';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../AuthProvider/AuthProvider';
 import { useEffect, useState } from 'react';
+import useAdmin from '../../Hooks/useAdmin';
 
 const NavBar = () => {
     const { user , logOut} = useAuth()
     // console.log(user)
+    const [isAdmin, loadAdmin] = useAdmin();
 
     const [photo, setPhoto] = useState(null);
     const [name, setName] = useState(null)
@@ -63,9 +65,16 @@ const NavBar = () => {
                         {
                             user ? 
                                 <>
-                                    <NavLink to="dashboard" className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "underline underline-offset-4 text-Primary font-bold mb-2" : "mb-2"}>
-                                        Dashboard
-                                    </NavLink>
+                                    {
+                                    isAdmin ?
+                                        <NavLink to="dashboard/AdminHome" className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "underline underline-offset-4 text-Primary font-bold mb-2" : "mb-2"}>
+                                            Admin Home
+                                        </NavLink>
+                                        :
+                                        <NavLink to="dashboard/userHome" className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "underline underline-offset-4 text-Primary font-bold mb-2" : "mb-2"}>
+                                            User Home
+                                        </NavLink>
+                                    }
                                     <p onClick={handleLogOut} className="inline w-20 hover:text-Primary hover:cursor-pointer">Log Out</p>
                                     {photo && <div className="mt-2 md:mt-0 flex gap-2 items-center md:items-start md:flex-row-reverse">
                                         

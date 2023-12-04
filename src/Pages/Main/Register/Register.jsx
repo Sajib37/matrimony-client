@@ -135,7 +135,7 @@ const Register = () => {
                             <TextInput
                                 {...register("name")}
                                 id="input-gray"
-                                placeholder="Enter your Email"
+                                placeholder="Enter your Name"
                                 type="text"
                                 required
                                 color="gray"

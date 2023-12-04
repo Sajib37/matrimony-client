@@ -3,7 +3,7 @@ import { RiMenu2Fill } from "react-icons/ri";
 import { FaHome } from "react-icons/fa";
 import { NavLink, useNavigate } from "react-router-dom";
 import {  MdEmail  } from "react-icons/md";
-import { FaDatabase } from "react-icons/fa6";
+import { FaDatabase, FaDiagramSuccessor } from "react-icons/fa6";
 import { MdOutlineMedicalInformation ,MdContacts ,MdFavorite ,MdDashboard ,MdManageAccounts ,MdApproval ,MdOutlineRequestQuote } from "react-icons/md";
 import { IoCreateSharp } from "react-icons/io5";
 import { LuView } from "react-icons/lu";
@@ -115,6 +115,12 @@ const Sidebar = () => {
                                         <h1 className="md:text-base font-semibold text-sm  uppercase">Approve request</h1>
                                     </div>
                                 </NavLink>
+                                <NavLink to='showStory' className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "text-black" : "mb-2"}>
+                                    <div className="flex gap-2 w-56 mx-auto">
+                                        <span className="text-2xl"><FaDiagramSuccessor /></span>
+                                        <h1 className="md:text-base font-semibold text-sm  uppercase">Success Story</h1>
+                                    </div>
+                                </NavLink>
 
                                 <Button onClick={handleLogOut} color="dark" className="w-[80%] mx-auto">Log Out</Button>
 
@@ -124,7 +130,7 @@ const Sidebar = () => {
                                 <NavLink to='userHome' className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "text-black" : "mb-2"}>
                                     <div className="flex gap-2 w-56 mx-auto">
                                         <span className="text-2xl"><FaHome /></span>
-                                        <h1 className="md:text-base font-semibold text-sm  uppercase">User Home</h1>
+                                        <h1 className="md:text-base font-semibold text-sm  uppercase">Got married</h1>
                                     </div>
                                 </NavLink>
 

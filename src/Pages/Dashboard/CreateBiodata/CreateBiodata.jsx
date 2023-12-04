@@ -49,7 +49,7 @@ const CreateBiodata = () => {
             },
         });
 
-        console.log(res.data.data.display_url)
+        // console.log(res.data.data.display_url)
 
         const newBio = {
             name: data.name,
@@ -72,7 +72,7 @@ const CreateBiodata = () => {
             phone: data.phone,
         }
 
-        console.log(newBio)
+        // console.log(newBio)
 
         if (res.data.success) {
             axiosPublic.put('/update/biodata', newBio)

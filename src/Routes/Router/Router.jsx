@@ -20,11 +20,15 @@ import AdminRoute from '../AdminRoute/AdminRoute';
 import AdminHome from '../../Pages/Dashboard/AdminHome/AdminHome';
 import UserHome from '../../Pages/Dashboard/UserHome/UserHome';
 import ApprovedRequest from '../../Pages/Dashboard/ApprovedRequest/ApprovedRequest';
+import SuccessStory from '../../Pages/Dashboard/SuccessStory/SuccessStory';
+import ViewStory from '../../Pages/Dashboard/ViewStory/ViewStory';
+import ErrorPage from '../../Pages/ErrorPage/ErrorPage';
 
 const router = createBrowserRouter([
     {
       path: "/",
         element: <Main></Main>,
+        errorElement:<ErrorPage></ErrorPage>,
         children: [
             {
                 path: "/",
@@ -52,8 +56,9 @@ const router = createBrowserRouter([
             },
             {
                 path: "/profile/:email",
-                element:<PrivateRouter><Profile></Profile></PrivateRouter>
-            }
+                // element:<PrivateRouter><Profile></Profile></PrivateRouter>
+                element:<Profile></Profile>
+            },
         ],
 
     },
@@ -103,6 +108,14 @@ const router = createBrowserRouter([
             {
                 path: "approvedRequest",
                 element: <AdminRoute><ApprovedRequest></ApprovedRequest></AdminRoute>
+            },
+            {
+                path: "showStory",
+                element: <AdminRoute><SuccessStory></SuccessStory></AdminRoute>
+            },
+            {
+                path: "showStory/viewStory/:id",
+                element: <AdminRoute><ViewStory></ViewStory></AdminRoute>
             }
         ]
     }

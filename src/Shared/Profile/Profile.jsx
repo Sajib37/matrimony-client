@@ -40,7 +40,8 @@ const Profile = () => {
 
     
     
-
+    // console.log(user)
+    
     if (isLoading) {
         return <Loader></Loader>;
     }

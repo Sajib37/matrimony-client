@@ -2,9 +2,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthProvider/AuthProvider";
 
-
 const axiosSecure = axios.create({
-    baseURL: "http://localhost:5000",
+    baseURL: "https://matrimony-server-tawny.vercel.app",
 });
 
 const useAxiosSecure = () => {
@@ -38,17 +37,16 @@ const useAxiosSecure = () => {
             console.log("Status error in the interceptor ", status);
 
             // for 401 and 403 logout the user
-            if (status === 401 || status === 403) {
-                logOut()
-                    .then((result) => {
-                        console.log('log out invalid user')
-                        navigate("/login");
-                        
-                    })
-                    .catch((error) => {
-                        console.log(error)
-                    });
-            }
+            // if (status === 401 || status === 403) {
+            //     logOut()
+            //         .then((result) => {
+            //             console.log("log out invalid user");
+            //             navigate("/login");
+            //         })
+            //         .catch((error) => {
+            //             console.log(error);
+            //         });
+            // }
             return Promise.reject(error);
         }
     );

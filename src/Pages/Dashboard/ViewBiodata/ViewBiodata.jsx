@@ -88,7 +88,9 @@ const ViewBiodata = () => {
             </Helmet>
 
 
-            <section className="w-full my-10">
+            {
+                profileInfo ?
+                <section className="w-full my-10">
                 <h1 className="text-center text-3xl md:text-4xl font-bold text-Accent mb-4">Identity Canvas</h1>
                 
                 <section className="">
@@ -147,7 +149,11 @@ const ViewBiodata = () => {
                 </section>
 
                 <div className='flex justify-center mt-8 text-lg'><span onClick={()=>handleRequest(profileInfo)}><AwesomeButton  type="secondary">Request for premium member</AwesomeButton></span></div>
-            </section>
+                    </section>
+
+                    :
+                    <h1 className='text-2xl font-bold text-red-500 text-center mt-20'>......Opps !! You did not create your profile yet. Create a profile first.....</h1>
+            }
             
         </section>
     );

@@ -14,11 +14,14 @@ import { useAuth } from "../../AuthProvider/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
 import useAdmin from "../../Hooks/useAdmin";
 import Loader from "../../Components/Loader";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 
 const Sidebar = () => {
 
-    const { logOut } = useAuth()
+    const { logOut, user } = useAuth()
+    const axiosPublic = useAxiosPublic();
+
     const navigate = useNavigate()
     const [open, setOpen] = useState(window.innerWidth >= 1024);
 
@@ -26,6 +29,15 @@ const Sidebar = () => {
     const [isAdmin, loadAdmin] = useAdmin()
 
     // console.log(isAdmin)
+    const [singleBio, setSingleBio] = useState({});
+    useEffect(() => {
+        if (user) {
+            axiosPublic.get(`/biodata/${user?.email}`)
+                .then(res => setSingleBio(res.data))
+                .catch(err => console.log(err))
+            
+        }
+    },[user])
 
 
     const handleLogOut = () => {
@@ -137,7 +149,10 @@ const Sidebar = () => {
                                 <NavLink to='createBiodata' className={({ isActive, isPending }) =>isPending ? "pending" : isActive ? "text-black" : "mb-2"}>
                                     <div className="flex gap-2 w-56 mx-auto">
                                         <span className="text-2xl"><IoCreateSharp /></span>
-                                        <h1 className="md:text-base font-semibold text-sm  uppercase">Create or Edit Biodata</h1>
+                                        {
+                                            singleBio ? <h1 className="md:text-base font-semibold text-sm  uppercase">Edit Biodata</h1>
+                                                : <h1 className="md:text-base font-semibold text-sm  uppercase">Create Biodata</h1>
+                                        }
                                     </div>
                                 </NavLink>
 

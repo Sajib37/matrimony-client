@@ -25,12 +25,11 @@ const Counter = () => {
 
     const totalBio = count.total;
     const maleBio = count.male;
-    const femaleBio = count.feamle;
-    console.log(count)
+    const femaleBio = count.female;
 
     
     return (
-        <section className=" my-10 md:my-12 lg:my-20  py-12 md:py-16 lg:py-20 bg-fixed" style={{backgroundPosition: 'center',backgroundImage:`url(${bg})` , backgroundSize:"cover"}}>
+        <section className=" my-10 md:my-12 lg:my-24  py-16 md:py-20 lg:py-20 bg-fixed" style={{backgroundPosition: 'center',backgroundImage:`url(${bg})` , backgroundSize:"cover"}}>
             <SectionTitle heading={'Our Impact in Numbers'} subHeading={"Explore Biodata, Gender Stats, and Successful Matches"}></SectionTitle>
 
             <section className="max-w-screen-xl mx-auto grid grid-cols-3">

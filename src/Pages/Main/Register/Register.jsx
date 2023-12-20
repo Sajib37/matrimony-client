@@ -16,7 +16,7 @@ const Register = () => {
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
 
-    const { createUser ,profileUpdate } = useAuth();
+    const { createUser ,profileUpdate,logOut } = useAuth();
 
     const { register, handleSubmit, reset } = useForm();
 
@@ -24,7 +24,7 @@ const Register = () => {
         // console.log(data);
         // upload image on imageBB and then get the url
         const imageFile = { image: data.image[0] };
-        console.log(imageFile)
+        // console.log(imageFile)
         const res = await axiosPublic.post(image_hosting_api, imageFile, {
             headers: {
                 "content-type": "multipart/form-data",
@@ -68,6 +68,13 @@ const Register = () => {
                                         toast.success("Account created successfully");
                                         reset();
                                         await new Promise((resolve) => setTimeout(resolve, 1000));
+                                        logOut()
+                                            .then(res => {
+                                            console.log(res)
+                                            })
+                                            .catch(err => {
+                                            console.log(err)
+                                        })
                                         navigate("/login");
                                     })
                                     .catch(error => console.log(error))                               

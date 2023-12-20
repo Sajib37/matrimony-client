@@ -24,6 +24,9 @@ const CreateBiodata = () => {
     const axiosPublic = useAxiosPublic()
 
     const [singleBio, setSingleBio] = useState({});
+
+
+
     const[loadBio , setLoadBio]=useState(true)
 
     
@@ -101,7 +104,11 @@ const CreateBiodata = () => {
                 </Helmet>
                 
                 <section >
-                    <h1 className="text-3xl text-Accent font-Lato mb-8 font-bold text-center">Create or Edit Biodata</h1>
+                    {
+                        singleBio ?
+                            <h1 className="text-3xl text-Accent font-Lato mb-8 font-bold text-center">Edit your Biodata</h1> :
+                            <h1 className="text-3xl text-Accent font-Lato mb-8 font-bold text-center">Create your  Biodata</h1>
+                    }
                     <div className="lg:w-[80%] bg-gray-100 py-6 md:py-8 lg:py-10 px-3 md:px-8 lg:px-10  w-full md:w-[90%]  mx-auto ">
                         <form
                             className="flex flex-col gap-2"
@@ -111,7 +118,7 @@ const CreateBiodata = () => {
                                 <div className="mb-1 block">
                                     <Label value="Name*" />
                                 </div>
-                                <TextInput {...register('name')} defaultValue={singleBio.name || ""}   id="base" type="text" sizing="md" required/>
+                                <TextInput {...register('name')} defaultValue={singleBio?.name ? singleBio.name : ''} placeholder="Enter your name."   id="base" type="text" sizing="md" required/>
                             </div>
     
     
@@ -146,15 +153,7 @@ const CreateBiodata = () => {
                                     <div className="mb-2 block">
                                         <Label value="Height:" />
                                     </div>
-                                    <Select  {...register('height')}  id="type" required>
-                                        <option value={'default'} disabled>Select Height:</option>
-                                        <option value={"150 cm"}>150 cm</option>
-                                        <option value={"155 cm"}>155 cm</option>
-                                        <option value={"160 cm"}>160 cm</option>
-                                        <option value={"165 cm"}>165 cm</option>
-                                        <option value={"170 cm"}>170 cm</option>
-                                        <option value={"175 cm"}>175 cm</option>
-                                    </Select>
+                                    <input required className="w-full rounded-lg" defaultValue={singleBio?.height ? singleBio.height : ''} placeholder="Enter your height (in cm )" {...register('height')} type="text"></input>
                                 </div>
                                 
                             </div>
@@ -165,28 +164,14 @@ const CreateBiodata = () => {
                                     <div className="mb-2 block">
                                         <Label value="Weight:" />
                                     </div>
-                                    <Select  {...register('weight')}  id="type" required>
-                                        <option value={'default'} disabled>Select Weight:</option>
-                                        <option value={"45 kg"}>45 kg</option>
-                                        <option value={"50 kg"}>50 kg</option>
-                                        <option value={"60 kg"}>60 kg</option>
-                                        <option value={"70 kg"}>70 kg</option>
-                                        <option value={"75 kg"}>75 kg</option>
-                                        <option value={"80 kg"}>80 kg</option>
-                                        <option value={"85 kg"}>85 kg</option>
-                                        <option value={"90 kg"}>90 kg</option>
-                                        <option value={"95 kg"}>95 kg</option>
-                                        <option value={"100 kg"}>100 kg</option>
-                                        <option value={"105 kg"}>105 kg</option>
-                                        <option value={"110 kg"}>110 kg</option>
-                                    </Select>
+                                    <input required className="w-full rounded-lg" {...register('weight')} defaultValue={singleBio?.weight ? singleBio.weight : ''} placeholder="Enter your weight (in kgs)" type="text"></input>
                                 </div>
     
                                 <div className="w-full">
                                     <div className="mb-1 block">
                                         <Label value="Age*" />
                                     </div>
-                                    <TextInput  {...register('age')} defaultValue={singleBio.age || ""}  id="base" type="number" sizing="md" required/>
+                                    <TextInput  {...register('age')} defaultValue={singleBio?.age ? singleBio.age : ''} placeholder="Enter your age"  id="base" type="number" sizing="md" required/>
                                 </div>
                             </div>
     
@@ -196,17 +181,7 @@ const CreateBiodata = () => {
                                     <div className="mb-2 block">
                                         <Label value="Occupation:" />
                                     </div>
-                                    <Select  {...register('occupation')}  id="type" required>
-                                        <option value={'default'} disabled>Select Occuaption:</option>
-                                        <option value={"Doctor"}>Doctor</option>
-                                        <option value={"Engineer"}>Engineer</option>
-                                        <option value={"Lecturer"}>Lecturer</option>
-                                        <option value={"Teacher"}>Teacher</option>
-                                        <option value={"Police"}>Police</option>
-                                        <option value={"Lawer"}>Lawer</option>
-                                        <option value={"Designer"}>Designer</option>
-                                        <option value={"Others"}>Others</option>
-                                    </Select>
+                                    <input required className="w-full rounded-lg" {...register('occuption')} defaultValue={singleBio?.occupation ? singleBio.occupation : ''} placeholder="Enter your Occuption." type="text"></input>
                                 </div>
                                 <div className="w-full">
                                     <div className="mb-2 block">
@@ -232,13 +207,13 @@ const CreateBiodata = () => {
                                     <div className="mb-1 block">
                                         <Label value="Fathers Name:" />
                                     </div>
-                                    <TextInput  {...register('fathersName')} defaultValue={singleBio.fathersName || ""}  id="base" type="text" sizing="md" required/>
+                                    <TextInput  {...register('fathersName')} defaultValue={singleBio?.fathersName ? singleBio.fathersName : ''} placeholder="Enter your Father's name."  id="base" type="text" sizing="md" required/>
                                 </div>
                                 <div className="w-full">
                                     <div className="mb-1 block">
                                         <Label value="Mothers Name" />
                                     </div>
-                                    <TextInput {...register('mothersName')} defaultValue={singleBio.mothersName || ""}  id="base" type="text" sizing="md" required/>
+                                    <TextInput {...register('mothersName')} defaultValue={singleBio?.mothersName ? singleBio.mothersName : ''} placeholder="Enter your mothers name"  id="base" type="text" sizing="md" required/>
                                 </div>
                             </div>
     
@@ -285,35 +260,13 @@ const CreateBiodata = () => {
                                     <div className="mb-2 block">
                                         <Label value="Partner Height:" />
                                     </div>
-                                    <Select  {...register('partnerHeight')}  id="type" required>
-                                        <option value={'default'} disabled>Select Height:</option>
-                                        <option value={"150 cm"}>150 cm</option>
-                                        <option value={"155 cm"}>155 cm</option>
-                                        <option value={"160 cm"}>160 cm</option>
-                                        <option value={"165 cm"}>165 cm</option>
-                                        <option value={"170 cm"}>170 cm</option>
-                                        <option value={"175 cm"}>175 cm</option>
-                                    </Select>
+                                    <input required className="w-full rounded-lg" defaultValue={singleBio?.partnerHeight ? singleBio.partnerHeight : ''} placeholder="Enter Partner Height (in cm )." {...register('partnerHeight')} type="text"></input>
                                 </div>
                                 <div className="w-full">
                                     <div className="mb-2 block">
                                         <Label value="Partner Weight:" />
                                     </div>
-                                    <Select {...register('partnerWeight')}  id="type" required>
-                                        <option value={'default'} disabled>Partner Weight:</option>
-                                        <option value={"45 kg"}>45 kg</option>
-                                        <option value={"50 kg"}>50 kg</option>
-                                        <option value={"60 kg"}>60 kg</option>
-                                        <option value={"70 kg"}>70 kg</option>
-                                        <option value={"75 kg"}>75 kg</option>
-                                        <option value={"80 kg"}>80 kg</option>
-                                        <option value={"85 kg"}>85 kg</option>
-                                        <option value={"90 kg"}>90 kg</option>
-                                        <option value={"95 kg"}>95 kg</option>
-                                        <option value={"100 kg"}>100 kg</option>
-                                        <option value={"105 kg"}>105 kg</option>
-                                        <option value={"110 kg"}>110 kg</option>
-                                    </Select>
+                                    <input required className="w-full rounded-lg" defaultValue={singleBio?.partnerWeight ? singleBio.partnerWeight : ''} placeholder="Pertner Weight (example: 60 kg)" {...register('partnerWeight')} type="text"></input>
                                 </div>
                             </div>
     
@@ -323,13 +276,13 @@ const CreateBiodata = () => {
                                     <div className="mb-1 block">
                                         <Label value="Partner Age:" />
                                     </div>
-                                    <TextInput {...register('partnerAge')} defaultValue={singleBio.partnerAge || ''}  id="base" type="number" sizing="md" required/>
+                                    <TextInput {...register('partnerAge')} defaultValue={singleBio?.partnerAge ? singleBio.partnerAge : ''} placeholder="Enter your expected partner Age."  id="base" type="number" sizing="md" required/>
                                 </div>
                                 <div className="w-full">
                                     <div className="mb-1 block">
                                         <Label value="Your Phone:" />
                                     </div>
-                                    <TextInput {...register('phone')} defaultValue={singleBio.phone || ""}  id="base" type="text" sizing="md" required/>
+                                    <TextInput {...register('phone')} defaultValue={singleBio?.phone ? singleBio.phone : ''} placeholder="Enter your Phone number."  id="base" type="text" sizing="md" required/>
                                 </div>
                             </div>
     

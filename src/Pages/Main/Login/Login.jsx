@@ -48,7 +48,7 @@ const Login = () => {
         emailLogin(email, password)
             .then(async result => {
                 toast.success('Login SuccessFully !')
-                console.log(result)
+                // console.log(result)
                 form.reset();
                 await new Promise((resolve) => setTimeout(resolve, 1000));
                 navigate(location?.state ? location.state : '/');

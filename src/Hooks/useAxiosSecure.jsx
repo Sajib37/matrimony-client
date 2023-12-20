@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthProvider/AuthProvider";
 
 const axiosSecure = axios.create({
-    baseURL: "https://matrimony-server-tawny.vercel.app",
+    baseURL: "http://localhost:5000",
 });
 
 const useAxiosSecure = () => {

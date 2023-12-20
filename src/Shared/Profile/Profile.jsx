@@ -13,7 +13,10 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 
 const Profile = () => {
-    const { email } = useParams();
+    const { id } = useParams();
+
+    console.log(id)
+
     const { user } = useAuth()
     const axiosPublic = useAxiosPublic();
 
@@ -24,19 +27,15 @@ const Profile = () => {
     const [biodata, isLoading ,refetch] = useBiodata();
 
     useEffect(() => {
-        if (biodata) {
-            const profileData = biodata.find(bio => bio.email === email);
+        if (biodata && id) {
+            const profileData = biodata.find(bio => bio._id === id);
             setProfileInfo(profileData);
-            if (user.email) {
-                const userData = biodata.find(bio => bio.email === user.email);
-                setUserBio(userData);
-            }
-            if (profileInfo) {
-                const displayData = biodata.filter(bio => bio.type === profileData.type && bio.biodataId !== profileData.biodataId)
+            if (profileData) {
+                const displayData = biodata.filter(bio => bio.type === profileData.type)
                 setRecommenedBiodata(displayData)
             }
         }
-    }, [email, biodata , user.email]);
+    }, [id, biodata]);
 
     
     
@@ -46,9 +45,9 @@ const Profile = () => {
         return <Loader></Loader>;
     }
 
-    if (user.email) {
-        console.log(userBio)
-    }
+    // if (user.email) {
+    //     console.log(userBio)
+    // }
     
     const handleFavourite = () => {
         const newFavourite = {
@@ -82,6 +81,16 @@ const Profile = () => {
             })
             .catch(err => console.log(err))
         
+    }
+
+    const handleContackInfo = () => {
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Requested for contact Info",
+            showConfirmButton: false,
+            timer: 1500
+        });
     }
 
     return (
@@ -142,7 +151,7 @@ const Profile = () => {
                             <h1 className="text-xl md:text-2xl font-bold mb-1 font-Lato text-blue-800">Contact Information:</h1>
 
                             {
-                                user.email && userBio?.member === 'premium' ?
+                                user && userBio?.member === 'premium' ?
                                     <div>
                                         <h1 className="font-semibold">Phone number: {profileInfo.phone}</h1>
                                         <h1 className="font-semibold">Email : { profileInfo.email}</h1>
@@ -150,7 +159,7 @@ const Profile = () => {
                                     :
                                     <div>
                                         <h1 className="font-semibold text-red-700">You must be premium member <br /> Or  </h1>
-                                        <div className='flex justify-center mt-8 text-lg'><AwesomeButton  type="secondary">request for contact Info</AwesomeButton></div>
+                                        <div onClick={handleContackInfo} className='flex justify-center mt-8 text-lg'><AwesomeButton   type="secondary">request for contact Info</AwesomeButton></div>
                                     </div>
                             }
                         </div>

@@ -14,7 +14,7 @@ const useReviews = () => {
         }
     })
 
-    console.log(reviews)
+    // console.log(reviews)
     return [reviews ,refetch , isLoading]
 };
 

@@ -18,7 +18,7 @@ const Review = () => {
     }
     const sortedReviews = reviews.sort((a, b) => new Date(b.marriageDate) - new Date(a.marriageDate));
 
-    console.log(reviews)
+    // console.log(reviews)
     return (
         <section className="my-20">
             <SectionTitle

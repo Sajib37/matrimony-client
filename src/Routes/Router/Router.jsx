@@ -55,9 +55,9 @@ const router = createBrowserRouter([
                 element:<Register></Register>
             },
             {
-                path: "/profile/:email",
+                path: "/profile/:id",
                 // element:<PrivateRouter><Profile></Profile></PrivateRouter>
-                element:<Profile></Profile>
+                element:<PrivateRouter><Profile></Profile></PrivateRouter>
             },
         ],
 
